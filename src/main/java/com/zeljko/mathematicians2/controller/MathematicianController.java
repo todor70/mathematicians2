@@ -15,78 +15,69 @@ import java.util.List;
 @Controller
 public class MathematicianController {
 
-	@RequestMapping("/listAll")
-	public String listAll(Model model){
-    	RestTemplate restTemplate = new RestTemplate();
-    	MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
+	private String lived1;
+	private String lived2;
+	private int from;
+	private int to;
+
+	@RequestMapping("/list")
+	public String list(Model model){
+		RestTemplate restTemplate = new RestTemplate();
+		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
 		assert response != null;
 		List<Mathematician> mathematicians = response.getMathematicians();
-		List<String> live = new ArrayList<>();
-		live.add("700 BC");
-		live.add("2000 AD");
-		model.addAttribute("mathematicians", mathematicians);
-		model.addAttribute("live", live);
+		List<Mathematician>  mathematicians1 = mathematicians.subList(from, to);
+		List<String> lived = new ArrayList<>();
+		lived.add(lived1);
+		lived.add(lived2);
+		model.addAttribute("mathematicians", mathematicians1);
+		model.addAttribute("lived", lived);
 		return "maths_list";
+	}
+
+	@RequestMapping("/listAll")
+	public String listAll(){
+		lived1 = "700 BC";
+		lived2 = "2000 AD";
+		from = 0;
+		to = 37;
+		return "redirect:/list";
 	}
 
 	@RequestMapping("/list1")
-	public String list1(Model model){
-		RestTemplate restTemplate = new RestTemplate();
-		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
-		assert response != null;
-		List<Mathematician> mathematicians = response.getMathematicians();
-		List<Mathematician>  mathematicians1 = mathematicians.subList(0, 13);
-		List<String> live = new ArrayList<>();
-		live.add("700 BC");
-		live.add("1400 AD");
-		model.addAttribute("mathematicians", mathematicians1);
-		model.addAttribute("live", live);
-		return "maths_list";
+	public String list1(){
+		lived1 = "700 BC";
+		lived2 = "1400 AD";
+		from = 0;
+		to = 13;
+		return "redirect:/list";
 	}
 
 	@RequestMapping("/list2")
-	public String list2(Model model){
-		RestTemplate restTemplate = new RestTemplate();
-		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
-		assert response != null;
-		List<Mathematician> mathematicians = response.getMathematicians();
-		List<Mathematician>  mathematicians2 = mathematicians.subList(13, 21);
-		List<String> live = new ArrayList<>();
-		live.add("1400 AD");
-		live.add("1700 AD");
-		model.addAttribute("mathematicians", mathematicians2);
-		model.addAttribute("live", live);
-		return "maths_list";
+	public String list2(){
+		lived1 = "1400 BC";
+		lived2 = "1700 AD";
+		from = 13;
+		to = 21;
+		return "redirect:/list";
 	}
 
 	@RequestMapping("/list3")
-	public String list3(Model model){
-		RestTemplate restTemplate = new RestTemplate();
-		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
-		assert response != null;
-		List<Mathematician> mathematicians = response.getMathematicians();
-		List<Mathematician>  mathematicians3 = mathematicians.subList(21, 29);
-		List<String> live = new ArrayList<>();
-		live.add("1700 AD");
-		live.add("1850 AD");
-		model.addAttribute("mathematicians", mathematicians3);
-		model.addAttribute("live", live);
-		return "maths_list";
+	public String list3(){
+		lived1 = "1700 BC";
+		lived2 = "1850 AD";
+		from = 21;
+		to = 29;
+		return "redirect:/list";
 	}
 
 	@RequestMapping("/list4")
-	public String list4(Model model){
-		RestTemplate restTemplate = new RestTemplate();
-		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
-		assert response != null;
-		List<Mathematician> mathematicians = response.getMathematicians();
-		List<Mathematician>  mathematicians4 = mathematicians.subList(29, 37);
-		List<String> live = new ArrayList<>();
-		live.add("1850 AD");
-		live.add("2000 AD");
-		model.addAttribute("mathematicians", mathematicians4);
-		model.addAttribute("live", live);
-		return "maths_list";
+	public String list4(){
+		lived1 = "1850 BC";
+		lived2 = "2000 AD";
+		from = 29;
+		to = 37;
+		return "redirect:/list";
 	}
 
 	@RequestMapping(value = "/mathematicianStory/{id}", method = RequestMethod.GET)
