@@ -79,7 +79,7 @@ public class MathematicianController {
 		return "redirect:/list";
 	}
 
-	@GetMapping(value = "/mathematicianStory/{id}")
+	@GetMapping("/mathematicianStory/{id}")
 	public String mathematicianStory(@PathVariable("id") int mathematicianId, Model model){
 
 		RestTemplate restTemplate = new RestTemplate();
