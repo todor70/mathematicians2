@@ -54,7 +54,7 @@ public class MathematicianController {
 
 	@GetMapping("/list2")
 	public String list2(){
-		lived1 = "1400 BC";
+		lived1 = "1400 AD";
 		lived2 = "1700 AD";
 		from = 13;
 		to = 21;
@@ -63,7 +63,7 @@ public class MathematicianController {
 
 	@GetMapping("/list3")
 	public String list3(){
-		lived1 = "1700 BC";
+		lived1 = "1700 AD";
 		lived2 = "1850 AD";
 		from = 21;
 		to = 29;
@@ -72,7 +72,7 @@ public class MathematicianController {
 
 	@GetMapping("/list4")
 	public String list4(){
-		lived1 = "1850 BC";
+		lived1 = "1850 AD";
 		lived2 = "2000 AD";
 		from = 29;
 		to = 37;
