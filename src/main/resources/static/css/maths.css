@@ -7,7 +7,7 @@ body {
     margin-bottom: 60px;
 }
 .jumbotron {
-    background-image: url('../../images/bg.jpg');
+    background-image: url('../../images/bg3.jpg');
     background-size: 100% 100%;
     color: #d2d1f4;
     margin-bottom: 0;
@@ -71,7 +71,7 @@ section.module.parallax h1 {
     text-shadow: 0 0 10px white;
 }
 section.module.parallax-1 {
-    background-image: url('../../images/bg3.jpg');
+    background-image: url('../../images/bg.jpg');
     background-position: 50% 0;
     background-repeat: repeat;
     background-attachment: fixed;
