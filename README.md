@@ -5,5 +5,10 @@ Spring Boot RestTemplate with Thymeleaf
 
 ![](images/list_2.png)
 
-![](images/story.png)
+![](images/list_3.png)
 
+![](images/story_1.png)
+
+![](images/story_2.png)
+
+![](images/story_3.png)
