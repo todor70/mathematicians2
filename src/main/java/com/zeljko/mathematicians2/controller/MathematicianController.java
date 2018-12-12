@@ -31,7 +31,7 @@ public class MathematicianController {
 		lived.add(lived2);
 		model.addAttribute("mathematicians", mathematicians1);
 		model.addAttribute("lived", lived);
-		return "maths_list";
+		return "math_list";
 	}
 
 	@GetMapping("/listAll")

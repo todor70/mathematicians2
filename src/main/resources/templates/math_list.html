@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Mathematician Story</title>
+    <title>Mathematician List</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,28 +37,38 @@
 </nav>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-3"><b style="font-family: 'sans-serif';" th:text="${math.name}"/></h1>
+        <div style="margin-top: 20px; margin-left: 12px">
+            <h2 style="font-family: 'sans-serif'">Mathematicians</h2>
+            <h4 style="font-family: 'sans-serif'">Born between <span th:text="${lived[0]}"></span> and <span
+                    th:text="${lived[1]}"></span></h4>
+        </div>
     </div>
 </div>
-<section class="module parallax parallax-1" data-type="background" data-speed="10">
+<section class="module parallax2 parallax-1" data-type="background" data-speed="10">
     <div class="parallax-container">
+        <div class="row">
+            <div th:each="math : ${mathematicians}">
+                <div class="col-md-3">
 
-        <img th:src="${math.image}" style="width: 950px; height: 600px" alt="Image">
-        <h1 th:text="${math.name}" style="font-size: 100px; margin-top: 50px; font-family: 'sans-serif';"></h1>
+                    <div class="thumbnail" style="width: 212px; height: 250px">
+                        <a th:href="@{/mathematicianStory/{id}(id=${math.mathematicianID})}">
+                            <img th:src="${math.image}" style="width: 212px; height: 130px" alt="...">
+                        </a>
+                        <div class="caption">
+                            <h5 th:text="${math.name}" style="color: white; font-family: 'sans-serif'"></h5>
+                            <h6 th:text="${math.lived}" style="color: white; font-family: 'sans-serif'"></h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-
-<section  class="module content">
-    <div class="parallax-container">
-        <h3 style="text-align: center"><b style="font-family: 'sans-serif';" th:text="${math.name}"/></h3>
-        <h4 style="text-align: center; margin-bottom: 20px"><b style="font-family: 'sans-serif';" th:text="${math.lived}"/></h4>
-        <h5 style="font-family: 'sans-serif'" th:text="${math.text}"></h5>
-    </div>
-</section>
-
 <footer class="footer">
     <div class="container-fluid bg-secondary">
-        <div class="col-xs-6 col-md-4 left">
+
+            <div class="col-xs-6 col-md-4 left">
                 <p>The Greatest Mathematicians</p>
             </div>
     </div>
