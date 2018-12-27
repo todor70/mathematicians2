@@ -10,20 +10,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/maths.css}"/>
+    <link rel="stylesheet" th:href="@{/css/card.css}"/>
+    <script th:src="@{/js/maths.js}"></script>
 
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-fade fixed-top" style="font-family: 'sans-serif'">
     <a class="navbar-brand" href="#">The Greatest Mathematicians</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mathematician Lists</a>
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Mathematician Lists</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" th:href="@{/listAll}">Born between 700 BC and 2000 AD</a>
                     <a class="dropdown-item" th:href="@{/list1}">Born between 700 BC and 1400 AD</a>
@@ -48,29 +52,49 @@
     <div class="parallax-container">
         <div class="row">
             <div th:each="math : ${mathematicians}">
-                <div class="col-md-3">
 
-                    <div class="thumbnail" style="width: 212px; height: 250px">
-                        <a th:href="@{/mathematicianStory/{id}(id=${math.mathematicianID})}">
-                            <img th:src="${math.image}" style="width: 212px; height: 130px" alt="...">
-                        </a>
-                        <div class="caption">
-                            <h5 th:text="${math.name}" style="color: white; font-family: 'sans-serif'"></h5>
-                            <h6 th:text="${math.lived}" style="color: white; font-family: 'sans-serif'"></h6>
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card" style="width:20rem;">
+                                <img class="card-img-top img- fluid" th:src="${math.image}"
+                                     style="width: 19.9rem; height: 15rem" alt="card image">
+                                <!--<div class="card-body">
+                                    <h4 class="card-title">Card Title</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card" style="background-color:#c87a7c; width:20rem; height: 15.2rem">
+                                <!-- <div class="card-header">
+                                     This is a Header
+                                 </div>-->
+                                <div class="card-body">
+                                    <h4 class="card-title" th:text="${math.name}"
+                                        style="margin-top: 20px; font-family: 'sans-serif'"></h4>
+                                    <p class="card-text" th:text="${math.lived}" style="font-family: 'sans-serif'"></p>
+                                    <a th:href="@{/mathematicianStory/{id}(id=${math.mathematicianID})}"
+                                       style="margin-top: 20px; font-family: 'sans-serif'"
+                                       class="btn btn-secondary btn-md">Read story</a>
+                                </div>
+                                <!-- <div class="card-footer">
+                                     This is a Footer
+                                 </div>-->
+                            </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
 </section>
 <footer class="footer">
     <div class="container-fluid bg-secondary">
-
-            <div class="col-xs-6 col-md-4 left">
-                <p>The Greatest Mathematicians</p>
-            </div>
+        <div class="col-xs-6 col-md-4 left" style="font-family: 'sans-serif'">
+            <p>The Greatest Mathematicians</p>
+        </div>
     </div>
 </footer>
 </body>
