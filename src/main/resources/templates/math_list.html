@@ -21,6 +21,17 @@
             box-shadow: 0 4px 2px rgba(13, 13, 26, 0.54);
         }
     </style>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#searchMath ").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -45,6 +56,9 @@
                 </div>
             </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" aria-label="Search">
+        </form>
     </div>
 </nav>
 <div class="jumbotron jumbotron-fluid">
@@ -61,7 +75,7 @@
         <div class="row">
             <div th:each="math : ${mathematicians}">
 
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                <div id="searchMath" class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card" style="width:20rem;">
