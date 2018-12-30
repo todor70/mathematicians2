@@ -18,13 +18,14 @@ public class MathematicianController {
 	private String lived2;
 	private int from;
 	private int to;
+	private List<Mathematician> mathematicians;
 
 	@GetMapping("/list")
 	public String list(Model model){
 		RestTemplate restTemplate = new RestTemplate();
 		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
 		assert response != null;
-		List<Mathematician> mathematicians = response.getMathematicians();
+		mathematicians = response.getMathematicians();
 		List<Mathematician>  mathematicians1 = mathematicians.subList(from, to);
 		List<String> lived = new ArrayList<>();
 		lived.add(lived1);
@@ -82,10 +83,6 @@ public class MathematicianController {
 	@GetMapping("/mathematicianStory/{id}")
 	public String mathematicianStory(@PathVariable("id") int mathematicianId, Model model){
 
-		RestTemplate restTemplate = new RestTemplate();
-		MathematicianList response = restTemplate.getForObject("http://localhost:8080/data/maths.json", MathematicianList.class);
-		assert response != null;
-		List<Mathematician> mathematicians = response.getMathematicians();
 		Mathematician mathematician = mathematicians.get(mathematicianId);
 		model.addAttribute("math", mathematician);
 		return "math_story";
