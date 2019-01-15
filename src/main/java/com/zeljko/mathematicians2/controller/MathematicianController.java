@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class MathematicianController {
 		lived1 = "700 BC";
 		lived2 = "2000 AD";
 		from = 0;
-		to = 37;
+		to = 80;
 		return "redirect:/list";
 	}
 
@@ -58,7 +60,7 @@ public class MathematicianController {
 		lived1 = "1400 AD";
 		lived2 = "1700 AD";
 		from = 13;
-		to = 21;
+		to = 35;
 		return "redirect:/list";
 	}
 
@@ -66,8 +68,8 @@ public class MathematicianController {
 	public String list3(){
 		lived1 = "1700 AD";
 		lived2 = "1850 AD";
-		from = 21;
-		to = 29;
+		from = 35;
+		to = 62;
 		return "redirect:/list";
 	}
 
@@ -75,8 +77,8 @@ public class MathematicianController {
 	public String list4(){
 		lived1 = "1850 AD";
 		lived2 = "2000 AD";
-		from = 29;
-		to = 37;
+		from = 62;
+		to = 80;
 		return "redirect:/list";
 	}
 
