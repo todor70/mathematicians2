@@ -19,17 +19,12 @@ body {
 @media(max-width: 768px){
     .navbar {background-color: #007bff !important; }
 }
-/* ============================================================
-  PRIMARY STRUCTURE
-============================================================ */
+
 .parallax-container {
     max-width: 960px;
     margin: 0 auto;
 }
 
-/* ============================================================
-  SECTIONS
-============================================================ */
 section.module:last-child {
     margin-bottom: 0;
 }
